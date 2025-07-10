@@ -35,7 +35,9 @@
                 <i class="bi bi-star-fill text-warning" v-for="n in prof.rating" :key="n"></i>
                 <i class="bi bi-star" v-for="n in (5 - prof.rating)" :key="n"></i>
               </div>
-              <button class="btn btn-primary btn-sm">Ver perfil</button>
+              <router-link :to="{ name: 'Profile', params: { id: index } }" class="btn btn-primary btn-sm">
+                Ver perfil
+              </router-link>
             </div>
           </div>
         </div>
