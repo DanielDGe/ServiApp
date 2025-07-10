@@ -77,82 +77,21 @@
 <script>
 import DefaultLayout from '../layouts/DefaultLayout.vue'
 import ShareModal from '../components/ShareModal.vue'
+import { defaultProfessionals } from '../data/professionals'
 
 export default {
   components: { DefaultLayout, ShareModal },
   props: ['id'],
   data() {
-    const perfiles = [
-      {
-        nombre: 'Ana Pérez',
-        servicio: 'Electricista',
-        experiencia: '5 años',
-        formacion: 'Curso Avanzado de Electricidad - INADEH 2022',
-        zona: 'Ciudad de Panamá',
-        foto: 'https://placehold.co/100',
-        trabajos: [
-          'https://placehold.co/150/',
-          'https://placehold.co/150/',
-          'https://placehold.co/150/',
-          'https://placehold.co/150/'
-        ],
-        opiniones: [
-          {
-            nombre: 'Luis Solís',
-            rating: 5,
-            comentario: 'Muy profesional y puntual.'
-          }
-        ]
-      },
-      {
-        nombre: 'Pedro Martínez',
-        servicio: 'Electricista',
-        experiencia: '2 años',
-        formacion: 'Técnico en Electricidad - INADEH 2021',
-        zona: 'Colón',
-        foto: 'https://placehold.co/100',
-        trabajos: [
-          'https://placehold.co/150/',
-          'https://placehold.co/150/'
-        ],
-        opiniones: [
-          {
-            nombre: 'Carlos Pérez',
-            rating: 4,
-            comentario: 'Buen servicio.'
-          }
-        ]
-      },
-      {
-        nombre: 'Juan González',
-        servicio: 'Electricista',
-        experiencia: '3 años',
-        formacion: 'Curso de Electricidad - INADEH 2023',
-        zona: 'Santiago',
-        foto: 'https://placehold.co/100',
-        trabajos: [
-          'https://placehold.co/150',
-          'https://placehold.co/150',
-          'https://placehold.co/150'
-        ],
-        opiniones: [
-          {
-            nombre: 'Maria Gomez',
-            rating: 5,
-            comentario: 'Realizó un trabajo excelente, muy recomendado 5 estrellas.'
-          },
-          {
-            nombre: 'Joana Lopez',
-            rating: 4,
-            comentario: 'Realizó una buena instalación.'
-          }
-        ]
-      }
-    ]
+    let profiles = JSON.parse(localStorage.getItem('profesionales'))
+    if (!profiles) {
+      localStorage.setItem('profesionales', JSON.stringify(defaultProfessionals))
+      profiles = defaultProfessionals
+    }
 
     const index = parseInt(this.id, 10)
     return {
-      profile: perfiles[index] || perfiles[0],
+      profile: profiles[index] || profiles[0],
       showModal: false
     }
   },
