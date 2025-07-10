@@ -48,23 +48,21 @@
 
 <script>
 import DefaultLayout from '../layouts/DefaultLayout.vue'
+import { defaultProfessionals } from '../data/professionals'
 
 export default {
   components: { DefaultLayout },
   data() {
-    const defaultProfesionales = [
-      { nombre: 'Ana Pérez', servicio: 'Electricista', rating: 5, foto: 'https://placehold.co/80' },
-      { nombre: 'Pedro Martínez', servicio: 'Electricista', rating: 4, foto: 'https://placehold.co/80' },
-      { nombre: 'Juan González', servicio: 'Electricista', rating: 3, foto: 'https://placehold.co/80' }
-    ]
+    const defaultProfiles = defaultProfessionals
 
-    const stored = JSON.parse(localStorage.getItem('profesionales'))
+    let stored = JSON.parse(localStorage.getItem('profesionales'))
     if (!stored) {
-      localStorage.setItem('profesionales', JSON.stringify(defaultProfesionales))
+      localStorage.setItem('profesionales', JSON.stringify(defaultProfiles))
+      stored = defaultProfiles
     }
 
     return {
-      profesionales: stored || defaultProfesionales
+      profesionales: stored
     }
   }
 }
