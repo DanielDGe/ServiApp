@@ -45,14 +45,15 @@
       <!-- Trabajos realizados -->
       <div class="mb-4">
         <h5 class="mb-3">Trabajos realizados</h5>
-        <div class="row">
-          <div class="col-6 col-md-3 mb-3" v-for="(img, i) in profile.trabajos" :key="i">
-            <img
-              :src="img || 'https://via.placeholder.com/150'"
-              class="img-fluid rounded"
-              alt="Trabajo realizado"
-            />
-          </div>
+        <div class="d-flex overflow-auto">
+          <img
+            v-for="(img, i) in profile.trabajos"
+            :key="i"
+            :src="img || 'https://via.placeholder.com/150'"
+            class="img-fluid rounded me-2"
+            style="width:150px; height:150px; object-fit:cover;"
+            alt="Trabajo realizado"
+          />
         </div>
       </div>
 
