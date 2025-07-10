@@ -5,6 +5,7 @@ import HomePage from '../pages/HomePage.vue'
 import ServicesPage from '../pages/ServicesPage.vue'
 import ContactPage from '../pages/ContactPage.vue'
 import ProfilePage from '../pages/ProfilePage.vue'
+import ApplyPage from '../pages/ApplyPage.vue'
 
 const routes = [
     {
@@ -21,6 +22,11 @@ const routes = [
         path: '/contact',
         name: 'Contact',
         component: ContactPage
+    },
+    {
+        path: '/apply',
+        name: 'Apply',
+        component: ApplyPage
     },
     {
         path: '/profile/:id',
