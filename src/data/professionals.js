@@ -13,6 +13,7 @@ export const defaultProfessionals = [
       'https://placehold.co/150/',
       'https://placehold.co/150/'
     ],
+    certificados: [],
     opiniones: [
       {
         nombre: 'Luis Solís',
@@ -33,6 +34,7 @@ export const defaultProfessionals = [
       'https://placehold.co/150/',
       'https://placehold.co/150/'
     ],
+    certificados: [],
     opiniones: [
       {
         nombre: 'Carlos Pérez',
@@ -54,6 +56,7 @@ export const defaultProfessionals = [
       'https://placehold.co/150',
       'https://placehold.co/150'
     ],
+    certificados: [],
     opiniones: [
       {
         nombre: 'Maria Gomez',

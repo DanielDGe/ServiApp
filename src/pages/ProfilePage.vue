@@ -32,6 +32,16 @@
         </div>
       </div>
 
+      <!-- Certificados -->
+      <div class="mb-4" v-if="profile.certificados && profile.certificados.length">
+        <h5 class="mb-3">Certificados</h5>
+        <div class="row">
+          <div class="col-6 col-md-3 mb-3" v-for="(img, i) in profile.certificados" :key="`cert-${i}`">
+            <img :src="img" class="img-fluid rounded" alt="Certificado" />
+          </div>
+        </div>
+      </div>
+
       <!-- Trabajos realizados -->
       <div class="mb-4">
         <h5 class="mb-3">Trabajos realizados</h5>
