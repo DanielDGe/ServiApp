@@ -77,17 +77,57 @@ import DefaultLayout from '../layouts/DefaultLayout.vue'
 
 export default {
   components: { DefaultLayout },
+  props: ['id'],
   data() {
-    return {
-      profile: {
-        nombre: 'Juan Pérez',
+    const perfiles = [
+      {
+        nombre: 'Ana Pérez',
+        servicio: 'Electricista',
+        experiencia: '5 años',
+        formacion: 'Curso Avanzado de Electricidad - INADEH 2022',
+        zona: 'Ciudad de Panamá',
+        foto: 'https://placehold.co/100',
+        trabajos: [
+          'https://placehold.co/150/FFAA00',
+          'https://placehold.co/150/FFAA00',
+          'https://placehold.co/150/FFAA00',
+          'https://placehold.co/150/FFAA00'
+        ],
+        opiniones: [
+          {
+            nombre: 'Luis Solís',
+            rating: 5,
+            comentario: 'Muy profesional y puntual.'
+          }
+        ]
+      },
+      {
+        nombre: 'Pedro Martínez',
+        servicio: 'Electricista',
+        experiencia: '2 años',
+        formacion: 'Técnico en Electricidad - INADEH 2021',
+        zona: 'Colón',
+        foto: 'https://placehold.co/100',
+        trabajos: [
+          'https://placehold.co/150/00AAFF',
+          'https://placehold.co/150/00AAFF'
+        ],
+        opiniones: [
+          {
+            nombre: 'Carlos Pérez',
+            rating: 4,
+            comentario: 'Buen servicio.'
+          }
+        ]
+      },
+      {
+        nombre: 'Juan González',
         servicio: 'Electricista',
         experiencia: '3 años',
         formacion: 'Curso de Electricidad - INADEH 2023',
         zona: 'Santiago',
         foto: 'https://placehold.co/100',
         trabajos: [
-          'https://placehold.co/150',
           'https://placehold.co/150',
           'https://placehold.co/150',
           'https://placehold.co/150'
@@ -105,6 +145,11 @@ export default {
           }
         ]
       }
+    ]
+
+    const index = parseInt(this.id, 10)
+    return {
+      profile: perfiles[index] || perfiles[0]
     }
   }
 }

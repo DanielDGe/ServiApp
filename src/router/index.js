@@ -23,9 +23,10 @@ const routes = [
         component: ContactPage
     },
     {
-        path: '/profile',
+        path: '/profile/:id',
         name: 'Profile',
-        component: ProfilePage
+        component: ProfilePage,
+        props: true
     }
 ]
 
