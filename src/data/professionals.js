@@ -1,11 +1,11 @@
 export const defaultProfessionals = [
   {
     nombre: 'Ana Pérez',
-    servicio: 'Electricista',
+    servicio: 'Modista',
     rating: 5,
     foto: 'https://placehold.co/100',
     experiencia: '5 años',
-    formacion: 'Curso Avanzado de Electricidad - INADEH 2022',
+    formacion: 'Curso de modisteria - INADEH 2022',
     zona: 'Ciudad de Panamá',
     trabajos: [
       'https://placehold.co/150/',
@@ -43,11 +43,11 @@ export const defaultProfessionals = [
   },
   {
     nombre: 'Juan González',
-    servicio: 'Electricista',
+    servicio: 'Albañil',
     rating: 3,
     foto: 'https://placehold.co/100',
     experiencia: '3 años',
-    formacion: 'Curso de Electricidad - INADEH 2023',
+    formacion: 'Curso de Albañileria - INADEH 2019',
     zona: 'Santiago',
     trabajos: [
       'https://placehold.co/150',
