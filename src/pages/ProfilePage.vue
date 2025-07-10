@@ -91,10 +91,10 @@ export default {
         zona: 'Ciudad de Panamá',
         foto: 'https://placehold.co/100',
         trabajos: [
-          'https://placehold.co/150/FFAA00',
-          'https://placehold.co/150/FFAA00',
-          'https://placehold.co/150/FFAA00',
-          'https://placehold.co/150/FFAA00'
+          'https://placehold.co/150/',
+          'https://placehold.co/150/',
+          'https://placehold.co/150/',
+          'https://placehold.co/150/'
         ],
         opiniones: [
           {
@@ -112,8 +112,8 @@ export default {
         zona: 'Colón',
         foto: 'https://placehold.co/100',
         trabajos: [
-          'https://placehold.co/150/00AAFF',
-          'https://placehold.co/150/00AAFF'
+          'https://placehold.co/150/',
+          'https://placehold.co/150/'
         ],
         opiniones: [
           {
