@@ -20,16 +20,12 @@
         </div>
         <div class="mb-3">
           <label class="form-label">Profesión/Servicio</label>
-          <input
-            class="form-control"
-            list="professionList"
+          <v-select
+            :options="professionOptions"
             v-model="form.servicioSelect"
-            @change="onProfessionChange"
+            @input="onProfessionChange"
             placeholder="Seleccione una profesión"
           />
-          <datalist id="professionList">
-            <option v-for="p in professionOptions" :key="p">{{ p }}</option>
-          </datalist>
           <input
             v-if="form.servicioSelect === 'Otra'"
             type="text"
@@ -44,33 +40,48 @@
           <input type="text" class="form-control" v-model="form.formacion" />
         </div>
         <div class="mb-3">
+          <label class="form-label">Años de experiencia</label>
+          <input type="number" class="form-control" v-model.number="form.experiencia" min="0" />
+        </div>
+        <div class="mb-3">
           <label class="form-label">Provincia</label>
-          <select class="form-select" v-model="form.provincia">
-            <option value="">Seleccione</option>
-            <option v-for="(d, p) in locationData" :key="p" :value="p">{{ p }}</option>
-          </select>
+          <v-select
+            :options="Object.keys(locationData)"
+            v-model="form.provincia"
+            placeholder="Seleccione"
+          />
         </div>
         <div class="mb-3">
           <label class="form-label">Distrito</label>
-          <select class="form-select" v-model="form.distrito" :disabled="!districts.length">
-            <option value="">Seleccione</option>
-            <option v-for="d in districts" :key="d" :value="d">{{ d }}</option>
-          </select>
+          <v-select
+            :options="districts"
+            v-model="form.distrito"
+            :disabled="!districts.length"
+            placeholder="Seleccione"
+          />
         </div>
         <div class="mb-3">
           <label class="form-label">Corregimiento</label>
-          <select class="form-select" v-model="form.corregimiento" :disabled="!corregimientos.length">
-            <option value="">Seleccione</option>
-            <option v-for="c in corregimientos" :key="c" :value="c">{{ c }}</option>
-          </select>
+          <v-select
+            :options="corregimientos"
+            v-model="form.corregimiento"
+            :disabled="!corregimientos.length"
+            placeholder="Seleccione"
+          />
         </div>
         <div class="mb-3">
           <label class="form-label">Certificados/Títulos</label>
           <input type="file" class="form-control" @change="onCertChange" multiple accept="image/*" />
+          <div class="d-flex mt-2" v-if="form.certificados.length">
+            <img v-for="(img,i) in form.certificados" :key="`cert-${i}`" :src="img" class="img-thumbnail me-2" style="width:60px;height:60px;object-fit:cover;" />
+          </div>
         </div>
         <div class="mb-3">
           <label class="form-label">Fotos de trabajos</label>
           <input type="file" class="form-control" @change="onWorkChange" multiple accept="image/*" />
+          <div class="d-flex mt-2" v-if="form.trabajos.length">
+            <img v-for="(img,i) in form.trabajos" :key="`trab-${i}`" :src="img" class="img-thumbnail me-2" style="width:60px;height:60px;object-fit:cover;" />
+          </div>
         </div>
         <button type="submit" class="btn btn-primary">Enviar</button>
       </form>
@@ -83,9 +94,11 @@ import DefaultLayout from '../layouts/DefaultLayout.vue'
 import { defaultProfessionals } from '../data/professionals'
 import { professions } from '../data/professions'
 import { locations } from '../data/locations'
+import vSelect from 'vue-select'
+import 'vue-select/dist/vue-select.css'
 
 export default {
-  components: { DefaultLayout },
+  components: { DefaultLayout, vSelect },
   data() {
     return {
       form: {
@@ -95,6 +108,7 @@ export default {
         servicio: '',
         servicioSelect: '',
         formacion: '',
+        experiencia: null,
         provincia: '',
         distrito: '',
         corregimiento: '',
@@ -183,7 +197,7 @@ export default {
         email: this.form.email,
         formacion: this.form.formacion,
         zona: `${this.form.provincia}, ${this.form.distrito}, ${this.form.corregimiento}`,
-        experiencia: '',
+        experiencia: this.form.experiencia ? `${this.form.experiencia} años` : '',
         trabajos: this.form.trabajos,
         certificados: this.form.certificados,
         opiniones: []
