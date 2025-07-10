@@ -52,12 +52,19 @@ import DefaultLayout from '../layouts/DefaultLayout.vue'
 export default {
   components: { DefaultLayout },
   data() {
+    const defaultProfesionales = [
+      { nombre: 'Ana Pérez', servicio: 'Electricista', rating: 5, foto: 'https://placehold.co/80' },
+      { nombre: 'Pedro Martínez', servicio: 'Electricista', rating: 4, foto: 'https://placehold.co/80' },
+      { nombre: 'Juan González', servicio: 'Electricista', rating: 3, foto: 'https://placehold.co/80' }
+    ]
+
+    const stored = JSON.parse(localStorage.getItem('profesionales'))
+    if (!stored) {
+      localStorage.setItem('profesionales', JSON.stringify(defaultProfesionales))
+    }
+
     return {
-      profesionales: [
-        { nombre: 'Ana Pérez', servicio: 'Electricista', rating: 5, foto: 'https://placehold.co/80' },
-        { nombre: 'Pedro Martínez', servicio: 'Electricista', rating: 4, foto: 'https://placehold.co/80' },
-        { nombre: 'Juan González', servicio: 'Electricista', rating: 3, foto: 'https://placehold.co/80' }
-      ]
+      profesionales: stored || defaultProfesionales
     }
   }
 }
