@@ -20,7 +20,7 @@
         </div>
         <div class="mb-3">
           <label class="form-label">Profesión/Servicio</label>
-          <v-select
+          <multiselect
             :options="professionOptions"
             v-model="form.servicioSelect"
             @input="onProfessionChange"
@@ -45,7 +45,7 @@
         </div>
         <div class="mb-3">
           <label class="form-label">Provincia</label>
-          <v-select
+          <multiselect
             :options="Object.keys(locationData)"
             v-model="form.provincia"
             placeholder="Seleccione"
@@ -53,7 +53,7 @@
         </div>
         <div class="mb-3">
           <label class="form-label">Distrito</label>
-          <v-select
+          <multiselect
             :options="districts"
             v-model="form.distrito"
             :disabled="!districts.length"
@@ -62,7 +62,7 @@
         </div>
         <div class="mb-3">
           <label class="form-label">Corregimiento</label>
-          <v-select
+          <multiselect
             :options="corregimientos"
             v-model="form.corregimiento"
             :disabled="!corregimientos.length"
@@ -94,11 +94,11 @@ import DefaultLayout from '../layouts/DefaultLayout.vue'
 import { defaultProfessionals } from '../data/professionals'
 import { professions } from '../data/professions'
 import { locations } from '../data/locations'
-import vSelect from 'vue-select'
-import 'vue-select/dist/vue-select.css'
+import Multiselect from 'vue-multiselect'
+import 'vue-multiselect/dist/vue-multiselect.css'
 
 export default {
-  components: { DefaultLayout, vSelect },
+  components: { DefaultLayout, Multiselect },
   data() {
     return {
       form: {
