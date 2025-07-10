@@ -61,22 +61,25 @@
 
       <!-- Botones de acción -->
       <div class="d-flex justify-content-between mt-4">
-        <button class="btn btn-secondary">
+        <router-link to="/" class="btn btn-secondary">
           <i class="bi bi-arrow-left"></i> Regresar
-        </button>
-        <button class="btn btn-primary">
+        </router-link>
+        <button class="btn btn-primary" @click="openShare">
           <i class="bi bi-share-fill"></i> Compartir
         </button>
       </div>
+
+      <ShareModal v-if="showModal" @close="closeShare" />
     </div>
   </DefaultLayout>
 </template>
 
 <script>
 import DefaultLayout from '../layouts/DefaultLayout.vue'
+import ShareModal from '../components/ShareModal.vue'
 
 export default {
-  components: { DefaultLayout },
+  components: { DefaultLayout, ShareModal },
   props: ['id'],
   data() {
     const perfiles = [
@@ -149,7 +152,16 @@ export default {
 
     const index = parseInt(this.id, 10)
     return {
-      profile: perfiles[index] || perfiles[0]
+      profile: perfiles[index] || perfiles[0],
+      showModal: false
+    }
+  },
+  methods: {
+    openShare() {
+      this.showModal = true
+    },
+    closeShare() {
+      this.showModal = false
     }
   }
 }
