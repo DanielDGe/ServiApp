@@ -15,20 +15,21 @@ export default defineConfig({
         theme_color: '#42b883',
         background_color: '#ffffff',
         display: 'standalone',
-        start_url: '/',
+        start_url: '/ServiApp/',
         icons: [
           {
-            src: '/pwa-192x192.png',
+            src: 'pwa-192x192.png',
             sizes: '192x192',
             type: 'image/png'
           },
           {
-            src: '/pwa-512x512.png',
+            src: 'pwa-512x512.png',
             sizes: '512x512',
             type: 'image/png'
           }
         ]
       }
     })
-  ]
+  ],
+  base: '/ServiApp/',
 })
